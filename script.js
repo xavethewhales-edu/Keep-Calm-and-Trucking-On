@@ -490,65 +490,75 @@ window.hideHome = function hideHome() {
 const scenes = {
 
   // =========================================================
-  // WEEK 1 — WHEN THE ROAD CLOSES
-  // Wildfires, route disruption & customer communication
+  // WEEK 2 — THE UNWRITTEN RULES
+  // Travel habits, social etiquette, queues & everyday English
+  // Parets del Vallès Dispatch Team
+  // =========================================================
+
+
+  // =========================================================
+  // DAY 1 — ARE SPANIARDS REALLY LIKE THIS?
   // =========================================================
 
   scene1: {
     type: "text",
+
     text: `
-BACK TO WORK
+WEEK 2 — THE UNWRITTEN RULES
 
-Before starting, talk together.
+Some rules are written.
+Others are simply understood.
 
-• Did you travel anywhere during your holidays?
-• Did you drive much?
-• Did you have any traffic problems?
-• Was it especially hot?
-• Did you hear about any forest fires?
-• Did any roads close near where you were?
+Before reading anything, discuss:
 
-Now change the situation.
+• What do visitors often misunderstand about Spain?
+• What Spanish habit would seem strange to somebody from another country?
+• Is there any "rule" you follow in public even though nobody tells you to?
+• What tourist behaviour annoys you most?
 
-You are not on holiday.
-
-A customer is waiting for a delivery.
-Your truck is already on the road.
-The planned route suddenly becomes unavailable.
-
-What information would you want first?
+Today we are looking at Spain from an outsider's point of view.
     `,
+
     choices: [
-      { text: "Move to the freight story", next: "scene2_article" }
+      {
+        text: "See what the article says",
+        next: "scene2_article"
+      }
     ]
   },
 
+
+  // ---------------------------------------------------------
+  // READING 1 — BBC TRAVEL
+  // ---------------------------------------------------------
+
   scene2_article: {
     type: "text",
+
     text: `
-READING 1 — WILDFIRES AND ROAD FREIGHT
+READING 1 — FIVE UNWRITTEN RULES FOR VISITING SPAIN
 
-Read:
+BBC Travel — 27 August 2026
 
-"Wildfires continue to disrupt road freight in France and Spain"
-trans.iNFO — 28 July 2026
+Read the article.
 
-Don't try to translate everything.
+Focus especially on:
 
-Look particularly for:
+• the "invisible queue";
+• sobremesa;
+• Spain's daily schedule;
+• personal space;
+• food and drink customs.
 
-• which important routes were affected;
-• what happened to freight traffic;
-• what drivers were advised to expect;
-• why extra journey time was necessary;
-• what companies should check before departure.
+Do NOT worry about understanding every word.
 
 Open the article in a separate tab, then return here.
     `,
+
     choices: [
       {
         text: "Open article ↗",
-        url: "https://trans.info/en/wildfires-continue-to-disrupt-road-freight-in-france-and-spain-492124",
+        url: "https://www.bbc.com/travel/article/20260826-five-unwritten-rules-for-visiting-spain",
         target: "_blank"
       },
       {
@@ -558,402 +568,416 @@ Open the article in a separate tab, then return here.
     ]
   },
 
+
   scene3_article_check: {
     type: "text",
     shuffleOptions: true,
-    text: `
-The A63 is an important route between Spain and northern Europe.
 
-Which conclusion best reflects the operational problem described in the article?
+    text: `
+According to the article, what makes the Spanish "invisible queue" work?
     `,
+
     choices: [
       {
-        text: "International freight had effectively stopped, so hauliers were being told to cancel cross-border departures.",
+        text: "People normally remember who arrived before them even when there is no visible line.",
+        next: "scene4_reaction"
+      },
+      {
+        text: "Customers take a numbered ticket in most small shops and bars.",
         next: "scene3_retry"
       },
       {
-        text: "Restrictions and diversions meant journeys could continue, but dispatchers needed to allow more time and check conditions.",
-        next: "scene4_cause_effect"
-      },
-      {
-        text: "The disruption mainly affected local traffic around Bordeaux and had little relevance for Spanish international freight.",
+        text: "The person nearest the counter is automatically served first.",
         next: "scene3_retry"
       },
       {
-        text: "The motorway remained fully open, although drivers were advised to avoid it because of congestion.",
+        text: "Staff normally ask every customer what time they arrived.",
         next: "scene3_retry"
       }
     ]
   },
+
 
   scene3_retry: {
     type: "text",
+
     text: `
-The important sequence is:
+The article describes a queue that may not LOOK like a queue.
 
-RESTRICTION
-→ DIVERSION
-→ EXTRA TIME
-→ CHECK CONDITIONS
+The important idea is social memory:
 
-The article does not say that all freight stopped.
+Who was last when you arrived?
+Who arrived after you?
 
 Try again.
     `,
+
     choices: [
-      { text: "Reassess", next: "scene3_article_check" }
+      {
+        text: "Try again",
+        next: "scene3_article_check"
+      }
     ]
   },
 
-  scene4_cause_effect: {
+
+  // ---------------------------------------------------------
+  // MAY / MIGHT + CULTURAL INTERPRETATION
+  // ---------------------------------------------------------
+
+  scene4_reaction: {
     type: "text",
     shuffleOptions: true,
-    text: `
-A dispatcher needs to explain why the delivery is late.
 
-Which version is both grammatically correct and operationally clear?
+    text: `
+A British visitor says:
+
+"There was no queue. Everyone was just standing around."
+
+Which reply is the best explanation?
     `,
+
     choices: [
       {
-        text: "The delivery is delayed because of a section of the A63 has been closed.",
+        text: "There wasn't a queue because people in Spain usually don't wait their turn.",
         next: "scene4_retry"
       },
       {
-        text: "The delivery is delayed because a section of the A63 has been closed.",
-        next: "scene5_cause_scramble"
+        text: "It might look disorganised, but people often know who is next even without standing in a straight line.",
+        next: "scene5_fib"
       },
       {
-        text: "The delivery is delayed due the closure of part of the A63.",
+        text: "You should stand directly behind the last person or you will definitely lose your place.",
         next: "scene4_retry"
       },
       {
-        text: "The delivery is delayed for a road closure affecting the A63.",
+        text: "The shop probably had no system because Spanish queues only work in large supermarkets.",
         next: "scene4_retry"
       }
     ]
   },
+
 
   scene4_retry: {
     type: "text",
+
     text: `
-Watch the structure.
+The useful distinction is:
 
-BECAUSE + CLAUSE
+LOOKS disorganised
+≠
+IS disorganised
 
-because a section of the road has been closed
-
-BECAUSE OF + NOUN
-
-because of a road closure
-
-DUE TO + NOUN
-
-due to a road closure
+Use MAY / MIGHT when something is an interpretation rather than a fact.
     `,
+
     choices: [
-      { text: "Try again", next: "scene4_cause_effect" }
+      {
+        text: "Try again",
+        next: "scene4_reaction"
+      }
     ]
   },
 
-  scene5_cause_scramble: {
-    type: "scramble",
-    disableSpeech: true,
-    text: `
-Build ONE complete customer update.
 
-CAUSE → CONSEQUENCE
+  // ---------------------------------------------------------
+  // FIB — MODAL + ADVICE
+  // ---------------------------------------------------------
+
+  scene5_fib: {
+    type: "fill-in-the-blank",
+
+    text: `
+Complete the explanation.
     `,
-    scramble: [
-      "because of wildfire-related restrictions",
-      "on the planned route.",
-      "may be delayed",
-      "The delivery",
-      "by approximately one hour"
+
+    sentence: [
+      "The system",
+      "__________",
+      "confusing at first, but visitors should",
+      "__________",
+      "who is last before ordering."
     ],
+
+    blanks: [1, 3],
+
+    options: [
+      "ask",
+      "might seem",
+      "seems might",
+      "asking",
+      "must seeming",
+      "to ask"
+    ],
+
     correct: [
-      "The delivery",
-      "may be delayed",
-      "by approximately one hour",
-      "because of wildfire-related restrictions",
-      "on the planned route."
+      "might seem",
+      "ask"
     ],
-    next: "scene6_pronouns"
+
+    next: "scene6_gerund"
   },
 
-  scene6_pronouns: {
+
+  // ---------------------------------------------------------
+  // GERUND RECYCLE
+  // ---------------------------------------------------------
+
+  scene6_gerund: {
     type: "text",
     shuffleOptions: true,
-    text: `
-The driver calls dispatch.
 
-Which follow-up sentence is correct?
+    text: `
+A friend is visiting Barcelona for the first time.
+
+Which advice sounds most natural?
     `,
+
     choices: [
       {
-        text: "Him told us that police had closed the road, so we asked he to wait.",
+        text: "Avoid to assume that a crowded counter has no queue.",
         next: "scene6_retry"
       },
       {
-        text: "He told us that police had closed the road, so we asked him to wait.",
-        next: "scene7_current_action"
+        text: "Avoid assuming that a crowded counter has no queue.",
+        next: "scene7_scramble"
       },
       {
-        text: "He told we that police had closed the road, so us asked him to wait.",
+        text: "Avoid assume that a crowded counter has no queue.",
         next: "scene6_retry"
       },
       {
-        text: "Him told us about the closure, so we asked to him to wait.",
+        text: "Avoid for assuming that a crowded counter has no queue.",
         next: "scene6_retry"
       }
     ]
   },
+
 
   scene6_retry: {
     type: "text",
+
     text: `
-Think about FUNCTION.
+Recycle last week's pattern:
 
-HE performs the action.
-HIM receives the action.
+AVOID + -ING
 
-HE told US.
-WE asked HIM.
+avoid assuming
+avoid interrupting
+avoid standing
+
+Try again.
     `,
-    choices: [
-      { text: "Try again", next: "scene6_pronouns" }
-    ]
-  },
 
-  scene7_current_action: {
-    type: "text",
-    shuffleOptions: true,
-    text: `
-The original route is unusable.
-
-The driver has already started the detour.
-
-Which update gives the clearest CURRENT status?
-    `,
     choices: [
       {
-        text: "The driver takes an alternative route and we expect approximately one hour of delay.",
-        next: "scene7_retry"
-      },
-      {
-        text: "The driver has to take an alternative route, although we do not know whether he has started.",
-        next: "scene7_retry"
-      },
-      {
-        text: "The driver is currently taking an alternative route, which is expected to add approximately one hour.",
-        next: "scene8_gerund_intro"
-      },
-      {
-        text: "The driver will take an alternative route because the delivery was one hour late.",
-        next: "scene7_retry"
+        text: "Try again",
+        next: "scene6_gerund"
       }
     ]
   },
 
-  scene7_retry: {
-    type: "text",
-    text: `
-The action is happening NOW.
 
-The driver IS CURRENTLY TAKING an alternative route.
+  // ---------------------------------------------------------
+  // SCRAMBLE — COMPLETE SENTENCE + PUNCTUATION
+  // ---------------------------------------------------------
 
-That gives the customer a live operational status.
-    `,
-    choices: [
-      { text: "Try again", next: "scene7_current_action" }
-    ]
-  },
-
-  scene8_gerund_intro: {
-    type: "text",
-    text: `
-THREE USEFUL ENGLISH PATTERNS
-
-Some combinations can feel unusual when thinking in Spanish.
-
-AVOID + -ING
-avoid driving through the affected area
-
-KEEP + -ING
-keep checking the traffic information
-
-CONSIDER + -ING
-consider taking another route
-
-Treat these as useful chunks rather than long grammar rules.
-    `,
-    choices: [
-      { text: "Test the pattern", next: "scene9_gerund" }
-    ]
-  },
-
-  scene9_gerund: {
-    type: "text",
-    shuffleOptions: true,
-    text: `
-The authorities have not closed the entire corridor,
-but conditions may worsen.
-
-Which instruction sounds most natural?
-    `,
-    choices: [
-      {
-        text: "Drivers should consider taking an alternative route and avoid entering the affected area unless necessary.",
-        next: "scene10_gerund_scramble"
-      },
-      {
-        text: "Drivers should consider to take an alternative route and avoid to enter the affected area unless necessary.",
-        next: "scene9_retry"
-      },
-      {
-        text: "Drivers should consider taking an alternative route and avoid to enter the affected area unless necessary.",
-        next: "scene9_retry"
-      },
-      {
-        text: "Drivers should consider to taking an alternative route and avoid entering the affected area unless necessary.",
-        next: "scene9_retry"
-      }
-    ]
-  },
-
-  scene9_retry: {
-    type: "text",
-    text: `
-Two useful combinations:
-
-CONSIDER + -ING
-consider taking
-
-AVOID + -ING
-avoid entering
-    `,
-    choices: [
-      { text: "Try again", next: "scene9_gerund" }
-    ]
-  },
-
-  scene10_gerund_scramble: {
+  scene7_scramble: {
     type: "scramble",
     disableSpeech: true,
-    text: `
-Build ONE complete dispatcher instruction.
 
-Pay attention to both the verb patterns and the sentence structure.
+    text: `
+Build ONE complete piece of travel advice.
     `,
+
     scramble: [
-      "before entering the affected corridor.",
-      "and keep checking",
-      "The driver should",
-      "the latest road information",
-      "consider using the alternative route"
+      "ask who is last",
+      "you should",
+      "before trying to order.",
+      "If the queue is not obvious,"
     ],
+
     correct: [
-      "The driver should",
-      "consider using the alternative route",
-      "and keep checking",
-      "the latest road information",
-      "before entering the affected corridor."
+      "If the queue is not obvious,",
+      "you should",
+      "ask who is last",
+      "before trying to order."
     ],
-    next: "scene11_message_structure"
+
+    next: "scene8_diction"
   },
 
-  scene11_message_structure: {
+
+  // ---------------------------------------------------------
+  // DICTION — RUDE → MIGHT COME ACROSS AS RUDE
+  // ---------------------------------------------------------
+
+  scene8_diction: {
     type: "text",
+    shuffleOptions: true,
+
     text: `
-A SIMPLE CUSTOMER UPDATE HAS FOUR JOBS
+A tourist stands extremely close behind you in a queue.
 
-1. SITUATION
-What happened?
-
-2. IMPACT
-What does it change?
-
-3. ACTION
-What are you doing now?
-
-4. ETA / NEXT UPDATE
-When should the customer expect the delivery,
-or when will you contact them again?
-
-SITUATION
-→ IMPACT
-→ ACTION
-→ ETA / NEXT UPDATE
+Which comment is the most balanced?
     `,
+
     choices: [
-      { text: "Writing task 1", next: "scene12_email" }
+      {
+        text: "That is rude. People must never stand close to strangers.",
+        next: "scene8_retry"
+      },
+      {
+        text: "That might come across as rude, although ideas about personal space vary between cultures.",
+        next: "scene9_email_intro"
+      },
+      {
+        text: "That is definitely acceptable because public places are crowded.",
+        next: "scene8_retry"
+      },
+      {
+        text: "That should be illegal because nobody likes people standing nearby.",
+        next: "scene8_retry"
+      }
     ]
   },
 
-  scene12_email: {
+
+  scene8_retry: {
+    type: "text",
+
+    text: `
+This is a social judgement, not an objective fact.
+
+Useful language:
+
+might come across as...
+can seem...
+depends on...
+
+Try again.
+    `,
+
+    choices: [
+      {
+        text: "Try again",
+        next: "scene8_diction"
+      }
+    ]
+  },
+
+
+  // ---------------------------------------------------------
+  // WRITING 1 PREPARATION
+  // ---------------------------------------------------------
+
+  scene9_email_intro: {
+    type: "text",
+
+    text: `
+WRITING 1
+
+A friend from another country is visiting Spain.
+
+Give useful advice without sounding like a rulebook.
+
+Try to include:
+
+• should / shouldn't;
+• may / might;
+• avoid + -ing;
+• one first conditional;
+• at least one expression such as "might come across as" or "it depends on".
+    `,
+
+    choices: [
+      {
+        text: "Write the advice",
+        next: "scene10_email"
+      }
+    ]
+  },
+
+
+  // ---------------------------------------------------------
+  // EMAIL 1
+  // ---------------------------------------------------------
+
+  scene10_email: {
     type: "email",
     awardOnEnter: 5,
-    text: `WRITING 1 — CUSTOMER UPDATE
 
-Your driver is travelling from Barcelona to Toulouse.
+    text: `
+WRITING 1 — ADVICE FOR A VISITOR
 
-A wildfire-related road closure means the planned route cannot be used.
+Write approximately 70–100 words to a friend visiting Spain.
 
-The alternative route is expected to add approximately 60 minutes.
+Give 4–5 useful pieces of advice about everyday behaviour.
 
-Write a SHORT email to the customer.
+You can mention:
 
-Include:
+• queues;
+• meal times;
+• sobremesa;
+• personal space;
+• food or drink habits.
 
-• what has happened;
-• the likely delay;
-• what the driver is doing now;
-• when you will update the customer.
+Use today's language naturally rather than copying the article.
+    `,
 
-Try to use some of today's language:
-
-because / because of / due to
-may / might
-is currently taking
-alternative route
-approximately
-if
-
-Aim for about 60–90 words.`,
     teacherEmail: "xavier.benitz@gmail.com",
-    emailSubject: "Dispatch Week 1 — Wildfire Customer Update",
+    emailSubject: "Dispatch Week 2 — Unwritten Rules Advice",
     emailBody: "",
-    next: "scene12_email_sent"
+
+    next: "scene10_email_sent"
   },
 
-  scene12_email_sent: {
+
+  scene10_email_sent: {
     type: "text",
+
     text: `
-✅ FIRST UPDATE SENT
+✅ WRITING 1 COMPLETE
 
-Now move from reading to listening.
+Now move from cultural rules to something much less serious:
 
-The next report looks at the wider wildfire situation in Spain and Portugal.
+annoying people on planes.
+
+Before watching, decide:
+
+What is worse?
+
+• somebody kicking your seat;
+• somebody talking to you for the whole flight;
+• somebody bringing strong-smelling food;
+• somebody climbing over you repeatedly?
     `,
+
     choices: [
-      { text: "Watch the BBC News report", next: "scene13_video" }
+      {
+        text: "Watch the plane etiquette video",
+        next: "scene11_video"
+      }
     ]
   },
 
-  scene13_video: {
+
+  // ---------------------------------------------------------
+  // VIDEO 1 — PATRICK STEWART
+  // ---------------------------------------------------------
+
+  scene11_video: {
     type: "video-multi-question",
-    youtube: "https://www.youtube.com/watch?v=yzqJ_ssP1BI",
+
+    youtube: "https://www.youtube.com/watch?v=ObgpFydLOcw",
 
     text: `
-BBC NEWS
+THE MOST ANNOYING PEOPLE ON THE PLANE
+Jimmy Kimmel Live — starring Sir Patrick Stewart
 
-Spain and Portugal wildfires drive worst EU season on record
+WATCH THE SHORT CLIP
 
-Listen for:
-
-• the countries affected;
-• the scale of the wildfire season;
-• conditions that increase fire risk;
-• why the situation matters beyond the immediate fire zone.
+Listen for the different passenger types and the behaviour being mocked.
 
 Then answer the questions.
     `,
@@ -962,44 +986,44 @@ Then answer the questions.
 
     questions: [
       {
-        text: "Which two countries are central to the report?",
+        text: "Why does Patrick Stewart perform several different passenger types?",
         options: [
-          "Spain and France",
-          "Portugal and Italy",
-          "Spain and Portugal",
-          "Spain and Greece"
-        ],
-        correct: 2
-      },
-      {
-        text: "Which description best captures the wider situation?",
-        options: [
-          "A local emergency with little effect beyond one region.",
-          "An unusually severe wildfire season affecting a wider European picture.",
-          "A transport crisis caused mainly by vehicle restrictions.",
-          "A fairly normal fire season receiving unusually high media attention."
+          "To demonstrate safety procedures for difficult flights.",
+          "To act out behaviours that passengers identified as especially annoying.",
+          "To compare first-class and economy passengers.",
+          "To explain why airline rules have recently changed."
         ],
         correct: 1
       },
       {
-        text: "Which statement best reflects the risk for transport planning?",
+        text: "Which label refers to somebody who keeps trying to talk to another passenger?",
         options: [
-          "A route that is open at departure can still become restricted as conditions change.",
-          "Once a motorway is open in the morning, it will probably remain open for the day.",
-          "Wildfire conditions mainly affect local traffic rather than international transport.",
-          "The safest response is to cancel every route passing through a hot region."
+          "Seat Climber",
+          "Landing Clapper",
+          "Chatty Charlie",
+          "Stinky Snacker"
+        ],
+        correct: 2
+      },
+      {
+        text: "What makes the sketch useful for discussing etiquette?",
+        options: [
+          "It exaggerates recognisable behaviour that people often tolerate in shared spaces.",
+          "It proves that every passenger dislikes exactly the same things.",
+          "It shows that most annoying behaviour is against airline law.",
+          "It argues that passengers should confront each other immediately."
         ],
         correct: 0
       },
       {
-        text: "Which customer message is the most defensible while conditions remain uncertain?",
+        text: "Which reaction is the most balanced after watching?",
         options: [
-          "The delivery will arrive at 18:00 because the alternative route is open.",
-          "There should be no further problems unless the road closes completely.",
-          "The driver is continuing, but conditions may change. We will update you if the route or ETA is affected.",
-          "We cannot provide any ETA because wildfire conditions are unpredictable."
+          "People should never speak to strangers on a plane.",
+          "If somebody annoys you, you must tell the cabin crew immediately.",
+          "Most of the behaviours are harmless, so nobody should complain about them.",
+          "Some behaviour may be harmless but can still come across as inconsiderate in a shared space."
         ],
-        correct: 2
+        correct: 3
       }
     ],
 
@@ -1009,628 +1033,881 @@ Then answer the questions.
     },
 
     endings: {
-      high: "scene13_day2_bridge",
-      medium: "scene13_day2_bridge",
-      low: "scene13_retry"
+      high: "scene12_day1_close",
+      medium: "scene12_day1_close",
+      low: "scene11_retry"
     }
   },
 
-  scene13_retry: {
+
+  scene11_retry: {
     type: "text",
+
     text: `
-Separate the report into four ideas:
+The sketch exaggerates everyday behaviour for comedy.
 
-LOCATION
-SCALE
-RISK
-CHANGE
+Listen for:
 
-You do not need every number.
+• what each passenger DOES;
+• why other passengers might find it annoying;
+• the difference between "annoying" and actually dangerous.
 
 Watch again.
     `,
+
     choices: [
-      { text: "Watch again", next: "scene13_video" }
+      {
+        text: "Watch again",
+        next: "scene11_video"
+      }
     ]
   },
 
-  // ---------------------------------------------------------
-  // CLEAN TEXT BRIDGE BETWEEN LESSONS
-  // ---------------------------------------------------------
 
-  scene13_day2_bridge: {
+  scene12_day1_close: {
     type: "text",
+
     text: `
 DAY 1 COMPLETE
 
-You have moved from:
+Today you recycled:
 
-ROAD CLOSURE
-→ DELAY
-→ ACTION
-→ CUSTOMER UPDATE
+• may / might;
+• should / shouldn't;
+• avoid + -ing;
+• first conditional;
+• more careful opinions:
+  "might come across as..."
+  "it depends on..."
 
-Now start a second operational situation.
+Day 2 asks a different question:
 
-This time, the road is still open.
-The problem is what MAY happen next.
+Why does jumping a queue feel so unfair?
     `,
+
     choices: [
-      { text: "Start Day 2", next: "scene14_day2" }
+      {
+        text: "Start Day 2",
+        next: "scene13_day2"
+      }
     ]
   },
 
+
   // =========================================================
-  // DAY 2 — UNCERTAINTY, CONTINGENCY & ETA
+  // DAY 2 — WHO'S NEXT?
   // =========================================================
 
-  scene14_day2: {
+  scene13_day2: {
     type: "text",
+
     text: `
-DAY 2 — THE ROAD IS OPEN. FOR NOW.
+DAY 2 — WHO'S NEXT?
 
-Yesterday:
+Imagine this:
 
-ROAD CLOSED
-→ DETOUR
-→ DELAY
-→ CUSTOMER UPDATE
+You have been waiting for 15 minutes.
+Someone walks directly to the front and says:
 
-Today the problem is less certain.
+"Sorry, I only have one quick question."
 
-A road may still be open when the truck leaves,
-but wildfire conditions can change while the driver is travelling.
+Discuss:
 
-That means dispatch needs language for:
+• Is that queue-jumping?
+• Would you say something?
+• Does it depend on the situation?
+• Is there ever a good reason to let somebody go first?
 
-• possibility;
-• prediction;
-• contingency;
-• decisions under uncertainty.
+Now look at why queues work at all.
     `,
+
     choices: [
-      { text: "Read the Zaragoza update", next: "scene15_article" }
+      {
+        text: "Read about the logic of queues",
+        next: "scene14_article"
+      }
     ]
   },
 
-  scene15_article: {
+
+  // ---------------------------------------------------------
+  // READING 2 — MIT PRESS
+  // ---------------------------------------------------------
+
+  scene14_article: {
     type: "text",
+
     text: `
-READING 2 — ZARAGOZA
+READING 2 — ON QUEUING: THE COGNITIVE LOGIC BEHIND LINES
 
-Read:
+MIT Press Reader
 
-"Zaragoza wildfire nears 12,000 hectares and is Spain's biggest of the year"
-Euronews — 17 July 2026
+Read from the beginning through the section explaining the THREE BASIC RULES OF QUEUING and the idea that a queue turns time into visible space.
 
 Focus on:
 
-• where the fire was;
-• the scale of the incident;
-• road and access consequences;
-• evacuations;
-• weather conditions;
-• why the situation could continue changing.
+• first come, first served;
+• what latecomers are expected to do;
+• how a visible queue communicates the rules;
+• why people can understand a queue without somebody organising it.
 
-Open the article in another tab, then return here.
+You do NOT need to read the entire article.
+
+Open the article in a separate tab, then return here.
     `,
+
     choices: [
       {
         text: "Open article ↗",
-        url: "https://www.euronews.com/my-europe/2026/07/17/zaragoza-wildfire-nears-12000-hectares-and-is-spains-biggest-of-the-year",
+        url: "https://thereader.mitpress.mit.edu/on-queuing-the-cognitive-logic-behind-lines/",
         target: "_blank"
       },
       {
-        text: "I've finished reading",
-        next: "scene16_uncertainty"
+        text: "I've finished the selected section",
+        next: "scene15_queue_check"
       }
     ]
   },
 
-  scene16_uncertainty: {
+
+  scene15_queue_check: {
     type: "text",
     shuffleOptions: true,
+
     text: `
-At 14:00 the road is still open.
-
-Firefighters warn that conditions may deteriorate later.
-
-Which dispatch decision best matches the information available?
+Which statement best captures the article's basic explanation of a queue?
     `,
+
     choices: [
       {
-        text: "Tell the customer that the road will close and add two hours to the ETA immediately.",
+        text: "A queue works mainly because staff continuously tell people where to stand.",
+        next: "scene15_retry"
+      },
+      {
+        text: "A queue is efficient only when everybody is standing very close together.",
+        next: "scene15_retry"
+      },
+      {
+        text: "A queue makes arrival order visible, so people can understand their position without constantly negotiating it.",
+        next: "scene16_pronouns"
+      },
+      {
+        text: "A queue works because the last person decides who will be served next.",
+        next: "scene15_retry"
+      }
+    ]
+  },
+
+
+  scene15_retry: {
+    type: "text",
+
+    text: `
+The queue communicates information visually.
+
+It turns:
+
+WHO ARRIVED FIRST?
+
+into:
+
+WHERE IS EACH PERSON STANDING?
+
+Try again.
+    `,
+
+    choices: [
+      {
+        text: "Try again",
+        next: "scene15_queue_check"
+      }
+    ]
+  },
+
+
+  // ---------------------------------------------------------
+  // PRONOUN RECYCLE
+  // ---------------------------------------------------------
+
+  scene16_pronouns: {
+    type: "text",
+    shuffleOptions: true,
+
+    text: `
+Someone pushes in front of Marta and Luis.
+
+Which report is correct?
+    `,
+
+    choices: [
+      {
+        text: "He pushed in front of they, so them asked him to move.",
         next: "scene16_retry"
       },
       {
-        text: "Ignore the warning until an official closure is announced because the road is still open.",
+        text: "Him pushed in front of them, so they asked he to move.",
         next: "scene16_retry"
       },
       {
-        text: "Keep the current route under review and prepare an alternative in case conditions worsen.",
-        next: "scene17_modal_language"
+        text: "He pushed in front of them, so they asked him to move.",
+        next: "scene17_conditional"
       },
       {
-        text: "Reroute immediately and tell the customer that the original road has already been closed.",
+        text: "He pushed in front of them, so them asked to him to move.",
         next: "scene16_retry"
       }
     ]
   },
+
 
   scene16_retry: {
     type: "text",
+
     text: `
-Separate:
+SUBJECT:
+HE / THEY
 
-WHAT IS TRUE NOW
+OBJECT:
+HIM / THEM
 
-from:
-
-WHAT MAY HAPPEN NEXT.
-
-Prepare for the risk without reporting it as a fact.
+He pushed in front of THEM.
+THEY asked HIM to move.
     `,
-    choices: [
-      { text: "Reassess", next: "scene16_uncertainty" }
-    ]
-  },
 
-  scene17_modal_language: {
-    type: "text",
-    shuffleOptions: true,
-    text: `
-Which customer update handles uncertainty most accurately?
-    `,
     choices: [
       {
-        text: "The road will close later, so the delivery will be delayed.",
-        next: "scene17_retry"
-      },
-      {
-        text: "The road might close later, so we are preparing an alternative route.",
-        next: "scene18_modal_scramble"
-      },
-      {
-        text: "The road should close later, so the driver is changing route now.",
-        next: "scene17_retry"
-      },
-      {
-        text: "The road may close later; therefore the delivery is definitely delayed.",
-        next: "scene17_retry"
+        text: "Try again",
+        next: "scene16_pronouns"
       }
     ]
   },
+
+
+  // ---------------------------------------------------------
+  // FIRST CONDITIONAL
+  // ---------------------------------------------------------
+
+  scene17_conditional: {
+    type: "text",
+    shuffleOptions: true,
+
+    text: `
+You are waiting at an airport café.
+Someone tries to move ahead of you.
+
+Which sentence gives a real future response?
+    `,
+
+    choices: [
+      {
+        text: "If somebody will jump the queue, I say something.",
+        next: "scene17_retry"
+      },
+      {
+        text: "If somebody jumped the queue, I will say something.",
+        next: "scene17_retry"
+      },
+      {
+        text: "If somebody is jumping the queue, I would say something.",
+        next: "scene17_retry"
+      },
+      {
+        text: "If somebody jumps the queue, I will say something.",
+        next: "scene18_scramble"
+      }
+    ]
+  },
+
 
   scene17_retry: {
     type: "text",
+
     text: `
-MAY / MIGHT = POSSIBILITY.
-
-Do not turn a possibility into a certainty.
-
-"The road might close"
-
-does not mean:
-
-"The delivery will definitely be late."
-    `,
-    choices: [
-      { text: "Try again", next: "scene17_modal_language" }
-    ]
-  },
-
-  scene18_modal_scramble: {
-    type: "scramble",
-    disableSpeech: true,
-    text: `
-Build ONE complete update.
-
-Separate the possible future risk from the action dispatch is taking now.
-    `,
-    scramble: [
-      "so we are preparing an alternative.",
-      "later this afternoon",
-      "The route may become unavailable",
-      "if conditions deteriorate,"
-    ],
-    correct: [
-      "The route may become unavailable",
-      "later this afternoon",
-      "if conditions deteriorate,",
-      "so we are preparing an alternative."
-    ],
-    next: "scene19_conditional"
-  },
-
-  scene19_conditional: {
-    type: "text",
-    shuffleOptions: true,
-    text: `
-The road remains open.
-
-Which contingency sentence is correct and useful?
-    `,
-    choices: [
-      {
-        text: "If the road will close, we will reroute the driver.",
-        next: "scene19_retry"
-      },
-      {
-        text: "If the road closes, we will reroute the driver.",
-        next: "scene20_conditional_meaning"
-      },
-      {
-        text: "If the road would close, we reroute the driver.",
-        next: "scene19_retry"
-      },
-      {
-        text: "If the road is closing, we would reroute the driver.",
-        next: "scene19_retry"
-      }
-    ]
-  },
-
-  scene19_retry: {
-    type: "text",
-    text: `
-For a real future possibility:
+Recycle the real future pattern:
 
 IF + PRESENT
 WILL + VERB
 
-If the road CLOSES,
-we WILL REROUTE the driver.
+If somebody JUMPS the queue,
+I WILL SAY something.
     `,
-    choices: [
-      { text: "Try again", next: "scene19_conditional" }
-    ]
-  },
 
-  scene20_conditional_meaning: {
-    type: "text",
-    shuffleOptions: true,
-    text: `
-The customer asks whether the current ETA is guaranteed.
-
-Which answer is strongest?
-    `,
     choices: [
       {
-        text: "The ETA is currently 18:30. If conditions change, we will update you immediately.",
-        next: "scene21_prepositions"
-      },
-      {
-        text: "The ETA will be 18:30 unless anything bad will happen on the route.",
-        next: "scene20_retry"
-      },
-      {
-        text: "We think 18:30, but if the road would close the ETA will change.",
-        next: "scene20_retry"
-      },
-      {
-        text: "The ETA should be 18:30, although if conditions change we update you.",
-        next: "scene20_retry"
+        text: "Try again",
+        next: "scene17_conditional"
       }
     ]
   },
 
-  scene20_retry: {
-    type: "text",
+
+  // ---------------------------------------------------------
+  // SCRAMBLE
+  // ---------------------------------------------------------
+
+  scene18_scramble: {
+    type: "scramble",
+    disableSpeech: true,
+
     text: `
-A useful structure is:
-
-CURRENT ETA
-+
-CONDITION
-+
-NEXT ACTION
-
-The ETA is currently 18:30.
-
-If conditions change,
-we will update you immediately.
+Build ONE complete response.
     `,
-    choices: [
-      { text: "Try again", next: "scene20_conditional_meaning" }
-    ]
+
+    scramble: [
+      "I might say something politely",
+      "If somebody moves in front of me,",
+      "before getting angry."
+    ],
+
+    correct: [
+      "If somebody moves in front of me,",
+      "I might say something politely",
+      "before getting angry."
+    ],
+
+    next: "scene19_fib"
   },
 
-  scene21_prepositions: {
-    type: "text",
-    shuffleOptions: true,
+
+  // ---------------------------------------------------------
+  // FIB — GERUND + MODAL
+  // ---------------------------------------------------------
+
+  scene19_fib: {
+    type: "fill-in-the-blank",
+
     text: `
-Which sentence uses the ETA language correctly?
+Complete the advice.
     `,
+
+    sentence: [
+      "People should avoid",
+      "__________",
+      "ahead of others, but if somebody does it accidentally, you",
+      "__________",
+      "not need to become aggressive."
+    ],
+
+    blanks: [1, 3],
+
+    options: [
+      "may",
+      "to move",
+      "moving",
+      "must",
+      "moved",
+      "should to"
+    ],
+
+    correct: [
+      "moving",
+      "may"
+    ],
+
+    next: "scene20_video_intro"
+  },
+
+
+  // ---------------------------------------------------------
+  // VIDEO 2 INTRODUCTION
+  // ---------------------------------------------------------
+
+  scene20_video_intro: {
+    type: "text",
+
+    text: `
+BRITISH QUEUE CULTURE
+
+The article describes the logic of a queue.
+
+Now compare that with a short English-language culture video.
+
+The opening section focuses on "Respect the Queue" and presents queuing as a question of fairness and consideration.
+
+Listen for:
+
+• where queues form;
+• what happens when somebody moves ahead;
+• what the queue represents socially.
+    `,
+
     choices: [
       {
-        text: "The driver should arrive to Lyon at approximately 18:30.",
-        next: "scene21_retry"
-      },
-      {
-        text: "The driver should arrive in Lyon at approximately 18:30.",
-        next: "scene22_gerund_recycle"
-      },
-      {
-        text: "The driver should arrive at Lyon on approximately 18:30.",
-        next: "scene21_retry"
-      },
-      {
-        text: "The driver should arrive in Lyon by approximately at 18:30.",
-        next: "scene21_retry"
+        text: "Watch the queue section",
+        next: "scene21_video"
       }
     ]
   },
+
+
+  // ---------------------------------------------------------
+  // VIDEO 2 — UK SOCIAL RULES
+  // ---------------------------------------------------------
+
+  scene21_video: {
+    type: "video-multi-question",
+
+    youtube: "https://www.youtube.com/watch?v=lW0d8cUfDlw",
+
+    text: `
+7 SOCIAL RULES THAT ONLY EXIST IN THE UK
+Learning Canteen
+
+WATCH THE OPENING "RESPECT THE QUEUE" SECTION
+
+Stop when the video moves on to the next rule about saying "sorry".
+
+Then answer the questions.
+    `,
+
+    shuffleOptions: true,
+
+    questions: [
+      {
+        text: "According to the video, what makes British queueing striking to many visitors?",
+        options: [
+          "People often form an orderly line even when there are no signs or barriers telling them to do so.",
+          "People are required by law to queue in public places.",
+          "Queues normally have a staff member controlling the order.",
+          "Visitors are normally allowed to move ahead if they are in a hurry."
+        ],
+        correct: 0
+      },
+      {
+        text: "What does the queue represent in the video?",
+        options: [
+          "Efficiency and speed above everything else.",
+          "Fairness and consideration for other people.",
+          "A traditional rule that younger people mostly ignore.",
+          "A way of keeping strangers from speaking to one another."
+        ],
+        correct: 1
+      },
+      {
+        text: "How does the video suggest a queue-jumper might be corrected?",
+        options: [
+          "By immediately calling security.",
+          "By refusing to serve them for the rest of the day.",
+          "With a quiet comment such as 'Excuse me, there's a queue.'",
+          "By asking everybody else to vote on what should happen."
+        ],
+        correct: 2
+      },
+      {
+        text: "Which comparison with the Spanish 'invisible queue' is most reasonable?",
+        options: [
+          "The two systems have nothing in common because only the British system is based on fairness.",
+          "The Spanish system has no order, while the British system always uses a straight line.",
+          "Both systems depend entirely on staff controlling who arrived first.",
+          "Both rely on people respecting arrival order, although they may make that order visible in different ways."
+        ],
+        correct: 3
+      }
+    ],
+
+    scoring: {
+      high: 4,
+      medium: 3
+    },
+
+    endings: {
+      high: "scene22_decision",
+      medium: "scene22_decision",
+      low: "scene21_retry"
+    }
+  },
+
 
   scene21_retry: {
     type: "text",
+
     text: `
-ARRIVE IN + CITY / COUNTRY
+Focus on three ideas:
 
-arrive in Lyon
-arrive in France
+ORDER
+FAIRNESS
+POLITE CORRECTION
 
-ARRIVE AT + SPECIFIC PLACE
-
-arrive at the warehouse
-
-AT + CLOCK TIME
-
-at 18:30
+Watch the queue section again.
     `,
+
     choices: [
-      { text: "Try again", next: "scene21_prepositions" }
+      {
+        text: "Watch again",
+        next: "scene21_video"
+      }
     ]
   },
 
-  scene22_gerund_recycle: {
+
+  // ---------------------------------------------------------
+  // SOCIAL JUDGEMENT
+  // ---------------------------------------------------------
+
+  scene22_decision: {
     type: "text",
     shuffleOptions: true,
-    text: `
-The original road is technically open,
-but congestion is increasing.
 
-Which instruction is the most natural and sensible?
+    text: `
+A woman asks to go ahead of you because her train leaves in five minutes.
+
+Which reaction is the most balanced?
     `,
+
     choices: [
       {
-        text: "Keep monitoring the route and consider changing it if the delay continues to increase.",
-        next: "scene23_final_scramble"
-      },
-      {
-        text: "Keep to monitor the route and consider changing it if the delay continues increasing.",
+        text: "She arrived later, so she must always stay behind you.",
         next: "scene22_retry"
       },
       {
-        text: "Keep monitoring the route and consider to change it if the delay continues to increase.",
+        text: "Let her go first automatically because people in a hurry should have priority.",
         next: "scene22_retry"
       },
       {
-        text: "Keep the route monitored and consider change it if the delay continues increasing.",
+        text: "It depends. If letting her go first costs you almost nothing, it might be reasonable to help her.",
+        next: "scene23_grammar_run"
+      },
+      {
+        text: "Ignore her because changing the order of a queue is always unfair to everybody.",
         next: "scene22_retry"
       }
     ]
   },
 
+
   scene22_retry: {
     type: "text",
+
     text: `
-Recycle the combinations:
+The point is not that queue rules never change.
 
-KEEP + -ING
+The stronger answer balances:
 
-keep monitoring
+RULE
++
+CONTEXT
++
+CONSEQUENCE
 
-CONSIDER + -ING
-
-consider changing
+Try again.
     `,
+
     choices: [
-      { text: "Try again", next: "scene22_gerund_recycle" }
+      {
+        text: "Reassess",
+        next: "scene22_decision"
+      }
     ]
   },
 
-  scene23_final_scramble: {
-    type: "scramble",
-    disableSpeech: true,
-    text: `
-FINAL MESSAGE STRUCTURE
 
-Put the FOUR complete sentences in the clearest customer-update order.
+  // ---------------------------------------------------------
+  // GRAMMAR RUN
+  // ---------------------------------------------------------
 
-Think:
+  scene23_grammar_run: {
+    type: "conjugation-race",
 
-SITUATION
-→ IMPACT
-→ ACTION
-→ NEXT UPDATE
-    `,
-    scramble: [
-      "If there are any further changes, we will inform you immediately.",
-      "The driver is currently using an alternative route.",
-      "The planned route is affected by wildfire-related restrictions.",
-      "The delivery may arrive approximately 90 minutes late."
-    ],
-    correct: [
-      "The planned route is affected by wildfire-related restrictions.",
-      "The delivery may arrive approximately 90 minutes late.",
-      "The driver is currently using an alternative route.",
-      "If there are any further changes, we will inform you immediately."
-    ],
-    next: "scene24_final_case"
+    text: "Timed recap: type the exact word(s). Hints shown under each prompt.",
+
+    timerPer: 12,
+    shuffle: true,
+    showAnswerOnWrong: true,
+    caseInsensitive: true,
+    acceptPunctuationVariants: true,
+    suppressHub: true,
+
+    scoring: {
+      high: 6,
+      medium: 4
+    },
+
+    endings: {
+      high: "scene24_email_intro",
+      medium: "scene24_email_intro",
+      low: "scene23_grammar_retry"
+    },
+
+    questions: [
+      {
+        prompt: "The behaviour ___ come across as rude, even if the person means no harm.",
+        answers: ["might"],
+        hint: "(must / might / will)"
+      },
+      {
+        prompt: "Avoid ___ directly in front of people who were already waiting.",
+        answers: ["moving"],
+        hint: "(moving / move / to move)"
+      },
+      {
+        prompt: "If somebody ___ the queue, I will ask whether they noticed it.",
+        answers: ["jumps"],
+        hint: "(jumping / jump / jumps)"
+      },
+      {
+        prompt: "He spoke to ___ because they were next in line.",
+        answers: ["them"],
+        hint: "(they / them / their)"
+      },
+      {
+        prompt: "The visitor arrived ___ the airport very early.",
+        answers: ["at"],
+        hint: "(in / on / at)"
+      },
+      {
+        prompt: "People were annoyed ___ his behaviour, not because the wait was longer.",
+        answers: ["because of"],
+        hint: "(because of / because / due)"
+      }
+    ]
   },
 
-  scene24_final_case: {
+
+  scene23_grammar_retry: {
     type: "text",
+
     text: `
-FINAL DISPATCH CASE
+QUICK RECAP
 
-A truck left Parets del Vallès this morning for Lyon.
+• might come across as...
+• avoid moving...
+• if somebody jumps..., I will...
+• speak to them
+• arrive at the airport
+• annoyed because of his behaviour
 
-Wildfire-related restrictions are affecting part of the planned route.
-
-The driver can continue via an alternative route,
-but the detour is expected to add approximately 90 minutes.
-
-Conditions may change again later this afternoon.
-
-The customer still expects the shipment today.
-
-Your update needs to make four things immediately clear:
-
-SITUATION
-IMPACT
-ACTION
-ETA / NEXT UPDATE
+Try the Grammar Run again.
     `,
+
     choices: [
-      { text: "Write the final customer update", next: "scene25_email" }
+      {
+        text: "Retry Grammar Run",
+        next: "scene23_grammar_run"
+      }
     ]
   },
+
+
+  // ---------------------------------------------------------
+  // WRITING 2 PREPARATION
+  // ---------------------------------------------------------
+
+  scene24_email_intro: {
+    type: "text",
+
+    text: `
+WRITING 2 — AN ANNOYING PUBLIC SITUATION
+
+Think of a real or invented situation involving:
+
+• a queue;
+• public transport;
+• an airport;
+• a restaurant;
+• a shop;
+• or another shared public space.
+
+Explain:
+
+1. what happened;
+2. why it annoyed people;
+3. what the person should have done differently;
+4. what you would do if it happened again.
+    `,
+
+    choices: [
+      {
+        text: "Write the story",
+        next: "scene25_email"
+      }
+    ]
+  },
+
+
+  // ---------------------------------------------------------
+  // EMAIL 2
+  // ---------------------------------------------------------
 
   scene25_email: {
     type: "email",
     awardOnEnter: 6,
-    text: `WRITING 2 — LIVE DELIVERY UPDATE
 
-Write a short email to the customer in Lyon.
+    text: `
+WRITING 2 — WHAT HAPPENED?
 
-Explain:
+Write approximately 80–110 words.
 
-• what has happened;
-• the likely effect on the ETA;
-• what the driver is doing now;
-• what you will do if conditions change.
+Describe an annoying social situation in a public place.
 
-Aim for approximately 70–100 words.
+Include:
 
-Try to include naturally:
+• what happened;
+• why it was annoying;
+• what the person should have done;
+• what you would do if it happened again.
 
-• because / because of / due to;
-• may or might;
-• one useful -ING structure;
+Try to use naturally:
+
+• because / because of;
+• may / might;
+• should / shouldn't;
+• one -ING structure;
 • one first conditional;
-• a clear ETA.
+• one object pronoun such as him / her / them.
+    `,
 
-Keep it practical and concise.
-
-This is a dispatch update, not a formal corporate letter.`,
     teacherEmail: "xavier.benitz@gmail.com",
-    emailSubject: "Dispatch Week 1 — Wildfire Delivery Update",
+    emailSubject: "Dispatch Week 2 — Unwritten Rules Story",
     emailBody: "",
+
     next: "scene25_email_sent"
   },
 
+
   scene25_email_sent: {
     type: "text",
+
     text: `
-✅ SECOND UPDATE SENT
+✅ WRITING 2 COMPLETE
 
-One final decision.
+One final question.
 
-Good dispatch English is not about sounding complicated.
+Unwritten rules are useful because they save us from negotiating every small social situation.
 
-It is about controlling:
-
-CERTAINTY
-SEQUENCE
-ACTION
-EXPECTATION
+But sometimes context matters more than the rule itself.
     `,
-    choices: [
-      { text: "Final challenge", next: "scene26_final" }
-    ]
-  },
 
-  scene26_final: {
-    type: "text",
-    shuffleOptions: true,
-    text: `
-The customer asks:
-
-"Can you confirm that the delivery will still arrive today?"
-
-The latest estimate says yes,
-but conditions on the route may still change.
-
-Which answer is strongest?
-    `,
     choices: [
       {
-        text: "Yes. The delivery will arrive today. We will let you know if there is a problem.",
-        next: "scene26_retry"
-      },
-      {
-        text: "It should still arrive today, although we cannot guarantee anything because of the wildfire.",
-        next: "scene26_retry"
-      },
-      {
-        text: "The current estimate is still for delivery today. However, conditions may change, so we will update you immediately if the route or ETA is affected.",
-        next: "thank_you_scene"
-      },
-      {
-        text: "The delivery might arrive today, but the wildfire could cause another delay and we do not know what will happen.",
-        next: "scene26_retry"
+        text: "Final judgement",
+        next: "scene26_final"
       }
     ]
   },
 
-  scene26_retry: {
+
+  // ---------------------------------------------------------
+  // FINAL CHALLENGE
+  // ---------------------------------------------------------
+
+  scene26_final: {
     type: "text",
+    shuffleOptions: true,
+
     text: `
-The strongest answer needs to do three things:
-
-• give the customer the CURRENT information;
-• avoid promising what you cannot know;
-• explain what will happen if conditions change.
-
-Try again.
+Which statement best summarises this week's idea?
     `,
+
     choices: [
-      { text: "Reassess the message", next: "scene26_final" }
+      {
+        text: "Good manners are universal, so the same behaviour should be acceptable everywhere.",
+        next: "scene26_retry"
+      },
+      {
+        text: "Unwritten rules are mostly unnecessary because people can simply do what feels natural to them.",
+        next: "scene26_retry"
+      },
+      {
+        text: "If a rule is unwritten, visitors cannot reasonably be expected to notice it.",
+        next: "scene26_retry"
+      },
+      {
+        text: "Social rules help people coordinate, but what seems polite or rude may depend on culture, context and how behaviour affects others.",
+        next: "thank_you_scene"
+      }
     ]
   },
 
+
+  scene26_retry: {
+    type: "text",
+
+    text: `
+Think about both readings.
+
+A social rule can create:
+
+ORDER
+FAIRNESS
+EXPECTATION
+
+But different cultures can express those ideas differently.
+
+Try again.
+    `,
+
+    choices: [
+      {
+        text: "Reassess",
+        next: "scene26_final"
+      }
+    ]
+  },
+
+
+  // ---------------------------------------------------------
+  // CLOSE
+  // ---------------------------------------------------------
+
   thank_you_scene: {
     type: "text",
+
     text: `
-WEEK 1 COMPLETE — WHEN THE ROAD CLOSES
+WEEK 2 COMPLETE — THE UNWRITTEN RULES
 
 Useful language:
 
-because + clause
-because of + noun
-due to + noun
-
-may / might + verb
+may / might
+should / shouldn't
 
 avoid + -ing
 keep + -ing
 consider + -ing
 
-arrive in + city
-arrive at + place
-at + time
+If somebody jumps the queue,
+I will say something.
 
-If conditions change,
-we will update you.
+He spoke to them.
+They asked him to move.
 
-CUSTOMER UPDATE:
+arrive at the airport
+arrive in Spain
 
-SITUATION
-→ IMPACT
-→ ACTION
-→ ETA / NEXT UPDATE
+because + clause
+because of + noun phrase
+
+Useful diction:
+
+might come across as...
+it depends on...
+considerate / inconsiderate
+fair / unfair
+awkward
+wait your turn
+jump the queue / cut in line
+
+The key idea:
+
+RULE
++
+CONTEXT
++
+EFFECT ON OTHER PEOPLE
     `,
+
     endOfCourse: true,
     finishOnEnter: false,
     scoreRaw: 100,
+
     choices: [
-      { text: "Play again", next: "scene1" }
+      {
+        text: "Play again",
+        next: "scene1"
+      }
     ]
   }
 
 };
-
 
 
 
